@@ -21,13 +21,15 @@
 					<th scope="col">Expense</th>
 					<th scope="col">Vendor</th>
 					<th scope="col">Amount</th>
+					<th scope="col">Actions</th>
 				</tr>
 				<c:forEach var="expense" items="${expenses}">
 				<tr class="text-warning">
 						<td><c:out value="${expense.id}"></c:out></td>
 						<td><c:out value="${expense.name}"></c:out></td>
 						<td><c:out value="${expense.vendor}"></c:out></td>
-						<td><c:out value="${expense.amount}"></c:out></td>		
+						<td><c:out value="${expense.amount}"></c:out></td>	
+						<td><a href="/expenses/${expense.id}/edit" class="text-warning">Edit</a></td>	
 				</tr>
 				</c:forEach>
 			</tbody>

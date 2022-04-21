@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.ernesto.savetravels.models.Expense;
 import com.ernesto.savetravels.services.ExpenseService;
@@ -42,8 +44,24 @@ public class ExpenseController {
 	@PostMapping("/expenses/new")
 	public String processForm(@Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
 		if (result.hasErrors()) {
-			System.out.println("Error!");
 			return "form.jsp";
+		} else {
+			expenseService.saveExpense(expense);
+			return "redirect:/expenses";
+		}
+	}
+
+	@GetMapping("/expenses/{id}/edit")
+	public String editForm(@PathVariable("id") Long id, Model model) {
+		Expense oneExpense = expenseService.findExpense(id);
+		model.addAttribute("expense", oneExpense);
+		return "edit.jsp";
+	}
+
+	@PutMapping("/expenses/{id}/edit")
+	public String processEdit(@Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
+		if (result.hasErrors()) {
+			return "edit.jsp";
 		} else {
 			expenseService.saveExpense(expense);
 			return "redirect:/expenses";
