@@ -29,10 +29,16 @@
 					<form:input path="vendor" />
 					<form:errors path="vendor" />
 				</p>
+				
 				<p>
 					<form:label path="amount">Expense Amount:</form:label>
 					<form:input path="amount" />
 					<form:errors path="amount" />
+				</p>
+				<p>
+					<form:label path="description">Description:</form:label>
+					<form:input path="description" />
+					<form:errors path="description" />
 				</p>
 				<button class="btn btn-warning mt-1 mb-3">Create</button>
 			</form:form>

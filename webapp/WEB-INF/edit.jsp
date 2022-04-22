@@ -17,7 +17,7 @@
 <body class="container bg-dark text-warning w-50 p-3 d-flex justify-content-center">
 	<div class="d-flex align-items-center flex-column">
 		<h1>Save Travels: Edit an Expense</h1>
-		<div class="rounded bg-dark text-warning border w-50 border-warning ps-5 pb-2 pt-4 mt-4">
+		<div class="rounded bg-dark text-warning border w-50 border-warning ps-4 pb-2 pt-4 mt-4">
 			<form:form action="/expenses/${expense.id}/edit" method="post"
 				modelAttribute="expense">
 				<input type="hidden" name="_method" value="put">
@@ -36,6 +36,11 @@
 					<form:input path="amount" />
 					<form:errors path="amount" />
 				</p>
+				<p>
+					<form:label path="description">Description:</form:label>
+					<form:input path="description" />
+					<form:errors path="description" />
+				</p>
 				<button class="btn btn-warning mt-1 mb-3">Edit</button>
 			</form:form>
 		</div>
@@ -43,3 +48,4 @@
 	</div>
 </body>
 </html>
+

@@ -11,4 +11,5 @@ import com.ernesto.savetravels.models.Expense;
 public interface ExpenseRepository extends CrudRepository<Expense, Long> {
 	@Override
 	List<Expense> findAll();
+
 }
